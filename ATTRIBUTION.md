@@ -5,4 +5,4 @@
 - `assets/run-desktop-project-crop.png`: an exact pixel crop `(0, 0, 1264, 430)` of an existing local screenshot of the working Career-Ops desktop Run page. Cropped below the action/status area to exclude personal counts.
 - `assets/run-active-project-crop.png`: an exact pixel crop `(0, 0, 390, 630)` of an existing local screenshot of the working Career-Ops mobile Run page during a scan. Cropped before the private review queue.
 
-No personal CV, job report, tracker row, employer-specific evaluation, or provider credential is included. The interactive Jobs and CVs views use synthetic data and are labelled as such.
+No personal CV, job report, tracker row, employer-specific evaluation, or provider credential is included. The Jobs view uses public ATS results collected at the time shown in the feed. CV generation is unavailable to public visitors. The screenshot assets are retained for provenance and optional LinkedIn use; the live website does not display them as substitutes for working features.

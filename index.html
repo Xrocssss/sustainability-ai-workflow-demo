@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'">
-  <meta name="description" content="A public, read-only walkthrough of a sustainability-focused AI workflow adapted from open-source Career-Ops.">
-  <title>Sustainability AI Workflow — Public Preview</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'self' https://boards-api.greenhouse.io https://api.lever.co https://api.ashbyhq.com; form-action 'none'; base-uri 'none'">
+  <meta name="description" content="Explore current public sustainability and climate jobs from employer ATS boards.">
+  <title>Sustainability AI Workflow — Live Jobs</title>
   <link rel="stylesheet" href="styles.css">
-  <script src="app.js" defer></script>
+  <script src="app.js" type="module"></script>
 </head>
 <body>
   <div class="site-shell">
@@ -20,44 +20,44 @@
         <a href="#cvs" data-nav="cvs">CVs</a>
         <a href="#how" data-nav="how">How it works</a>
       </nav>
-      <div class="sidebar-foot">Public preview <span>·</span> Development build</div>
+      <div class="sidebar-foot">Public jobs <span>·</span> Development build</div>
     </aside>
 
     <main id="main" tabindex="-1">
       <div class="mobile-head"><a class="brand" href="#run">Sustainability <span>AI Workflow</span></a><button id="menu-button" type="button" aria-label="Open navigation" aria-expanded="false">Menu</button></div>
-      <div class="notice" role="note"><strong>Public walkthrough</strong><span>Synthetic records. AI and document generation are disabled.</span></div>
+      <div class="notice" role="note"><strong>Live public jobs</strong><span>Anonymous browsing. CV creation and provider AI are off.</span></div>
 
       <section id="run-view" class="view" aria-labelledby="run-title">
         <p class="eyebrow">01 / Run</p>
-        <h1 id="run-title">Find your next role</h1>
-        <p class="lede">A single flow for finding, scoring, and reviewing opportunities. The public preview stops before any live AI call.</p>
-        <div class="actions"><button id="demo-run" class="primary" type="button">Find and score jobs</button><span class="cap">Maximum AI jobs this run <b>3</b></span></div>
-        <p id="run-message" class="status" role="status" aria-live="polite">Explore the saved example jobs below. No account or provider access is connected.</p>
-        <div class="proof-grid"><a class="metric" href="#jobs"><small>REVIEW QUEUE</small><strong>3</strong><span>example jobs</span></a><a class="metric" href="#jobs"><small>SCORED</small><strong>2</strong><span>example evaluations</span></a><a class="metric" href="#cvs"><small>CVs</small><strong>1</strong><span>example review state</span></a></div>
-        <div class="real-screen"><div class="section-heading"><h2>From the working project</h2><span>Exact screenshot crops</span></div><img src="assets/run-desktop-project-crop.png" width="1264" height="430" alt="Actual desktop Career-Ops Run screen, cropped above personal job counts"><img class="mobile-crop" src="assets/run-active-project-crop.png" width="390" height="630" alt="Actual mobile Career-Ops Run screen with the active orb and Stop control"></div>
+        <h1 id="run-title">Find current roles</h1>
+        <p class="lede">Browse a published scan, or check selected employer boards right now. Every role links to its public source.</p>
+        <div class="actions"><button id="demo-run" class="primary" type="button">Refresh 7 employer boards</button><button id="stop-run" class="secondary" type="button" hidden>Stop</button></div>
+        <p id="run-message" class="status" role="status" aria-live="polite">Loading the latest public scan…</p>
+        <div class="proof-grid"><a class="metric" href="#jobs"><small>PUBLIC JOBS</small><strong id="job-count">—</strong><span>source-linked vacancies</span></a><div class="metric"><small>CORE ESG + CLIMATE</small><strong id="core-count">—</strong><span>focused titles</span></div><div class="metric"><small>LAST SCAN</small><strong id="scan-age" class="date-metric">—</strong><span id="scan-coverage">selected public boards</span></div></div>
+        <section class="focus-panel" aria-labelledby="focus-title"><div><h2 id="focus-title">Your focus</h2><p>Optional. Used only in this tab to sort public jobs.</p></div><label>Role or topic<input id="profile-role" type="text" maxlength="80" placeholder="e.g. climate risk"></label><label>Location<input id="profile-location" type="text" maxlength="80" placeholder="e.g. Canada"></label></section>
+        <p id="source-health" class="scope-note">Selected boards only; this is not a complete market search.</p>
       </section>
 
       <section id="jobs-view" class="view" aria-labelledby="jobs-title" hidden>
         <p class="eyebrow">02 / Jobs</p><h1 id="jobs-title">Jobs</h1>
-        <p class="lede">Browse example roles and inspect why one might be worth reviewing.</p>
-        <label class="search-label">Search example jobs<input id="job-search" type="search" placeholder="Company or role" autocomplete="off"></label>
-        <p class="fixture-label">Synthetic demonstration data · no live vacancies</p>
+        <p id="feed-note" class="lede">Loading verified public ATS results…</p>
+        <div class="job-controls"><label class="search-label">Search jobs<input id="job-search" type="search" placeholder="Company or role" autocomplete="off"></label><label class="search-label">Show<select id="job-scope"><option value="core">Core ESG + climate</option><option value="all">All sustainability + adjacent</option></select></label></div>
+        <p id="result-count" class="fixture-label"></p>
         <div id="job-list" class="job-list"></div>
+        <button id="show-more" class="secondary" type="button" hidden>Show more</button>
         <section id="job-detail" class="detail" aria-live="polite" hidden></section>
       </section>
 
       <section id="cvs-view" class="view" aria-labelledby="cvs-title" hidden>
         <p class="eyebrow">03 / CVs</p><h1 id="cvs-title">CVs</h1>
-        <p class="lede">Documents stay linked to a role and require human review before use.</p>
-        <p class="fixture-label">Synthetic demonstration data · no personal CV included</p>
-        <div class="cv-row"><div class="file-icon" aria-hidden="true">▤</div><div><h2>Climate Risk Consultant</h2><p>Example Energy · illustrative review state</p></div><span class="review-pill">Needs review</span></div>
-        <div class="empty-panel"><strong>Document generation is unavailable in this public preview.</strong><p>The personal installation can prepare a tailored CV for review. This site stores no CV files and offers no downloads.</p></div>
+        <p class="lede">Your CV and applications remain yours.</p>
+        <div class="empty-panel"><strong>CV creation is off for public visitors.</strong><p>This demo does not accept CV files, run provider AI, generate documents, or submit applications.</p></div>
       </section>
 
       <section id="how-view" class="view" aria-labelledby="how-title" hidden>
         <p class="eyebrow">04 / How it works</p><h1 id="how-title">Human decisions, visible evidence</h1>
-        <ol class="flow"><li><strong>Discover</strong><span>Public employer and ATS sources</span></li><li><strong>Normalize</strong><span>Deduplicate roles and preserve source links</span></li><li><strong>Evaluate</strong><span>Compare a role with supported CV evidence</span></li><li><strong>Review</strong><span>Surface gaps and unknown eligibility</span></li><li><strong>Decide</strong><span>A person creates, uses, and sends documents</span></li></ol>
-        <div class="empty-panel"><strong>This preview is frontend-only.</strong><p>The backend is still being configured for any public test. No provider keys, AI execution, local files, application submission, or messaging are available here.</p></div>
+        <ol class="flow"><li><strong>Discover</strong><span>Scheduled scans of selected Greenhouse, Lever, Ashby and Workday boards</span></li><li><strong>Refresh</strong><span>Check seven CORS-enabled boards directly when you press Run</span></li><li><strong>Review</strong><span>See source links, listing dates where provided, and coverage gaps</span></li><li><strong>Decide</strong><span>You choose which employer posting to open</span></li></ol>
+        <div class="empty-panel"><strong>How the public demo works</strong><p>The job feed is built from public employer listings without AI tokens. Your focus fields stay in this tab. CV generation and personal-data features of the private installation are unavailable here. Source availability and freshness vary; verify a role on the employer page before acting.</p></div>
         <p class="credit">Personal side project based on the <a href="https://github.com/career-ops-hq/career-ops" target="_blank" rel="noopener noreferrer">open-source Career-Ops project</a>. This preview is not affiliated with or endorsed by its maintainers.</p>
       </section>
     </main>

@@ -1,26 +1,17 @@
-# Sustainability AI Workflow — public walkthrough
+# Sustainability AI Workflow — live public job demo
 
-This is a **static, read-only preview** of a personal side project based on the open-source [Career-Ops](https://github.com/career-ops-hq/career-ops) system. It lets visitors walk through Run, Jobs, CVs, and the workflow design while the public backend is still being configured. The working personal installation is separate and private.
+This is a public, early-stage demo adapted from [Career-Ops](https://github.com/career-ops-hq/career-ops). Visitors can browse actual public job listings without signing in, filter them, open the employer's ATS page, and refresh seven named employer boards on demand. The published snapshot is refreshed twice daily by GitHub Actions. It scans selected Greenhouse, Lever, Ashby, and Workday boards; it is not a complete search of the job market.
 
-The two images under `assets/` are **unaltered pixel crops of real Career-Ops UI screenshots**; the crops exclude personal job counts and records. All job names, employers, scores, and CV states rendered by this site are synthetic examples. They are not live postings or results.
+The **Run** button checks seven public employer boards without spending AI tokens. **Jobs** shows source-linked listings and their reported posting or update information. A role/location focus can change the order in this browser tab; it is not uploaded or saved as a profile. **CVs** explains that document generation is unavailable in the public demo. No application or message is sent. AI scoring and CV creation are off for public visitors while the private backend remains in development.
 
-## Boundaries
+Listings may close or change between scans. Open the employer listing to confirm availability, location, and eligibility. The Workday scan examines only the first 20 results for each configured search term on selected boards. Failed source requests and partial coverage are shown in the interface. Public refresh checks only seven boards to bound traffic; it does not update the scheduled snapshot for other visitors.
 
-- Static HTML/CSS/JavaScript only; no API routes, server, provider keys, AI calls, uploads, analytics, cookies, or local storage.
-- The Run button explains why AI scoring is unavailable. CV generation, applications, and messages are unavailable.
-- Do not use this preview to submit personal information. The working tool remains local and human-controlled.
-- This repository does **not** contain the personal CV, tracker, reports, provider configuration, or full modified backend. It is a public walkthrough, not a fork of the full working installation.
+## Run locally
 
-## Local check
+From this repository, run `python -m http.server 8765` and open the address printed by Python. A local static server is required because the page loads JavaScript modules and JSON files. Run `node --test tests/*.test.mjs` to check the public data contract. Run `node scripts/refresh-jobs.mjs` to rebuild the public snapshot from current ATS results. Node.js 22 or newer is recommended.
 
-```powershell
-node --test tests/*.test.mjs
-node --check app.js
-python -m http.server 8765 --bind 127.0.0.1
-```
+## Data and provenance
 
-Then open `http://127.0.0.1:8765/`. Stop the server with Ctrl+C.
+`data/jobs.json` contains only public employer/ATS job fields and scan health. `sources.json` contains public board identifiers. The feed collector reads a public board-name directory and the configured public ATS endpoints; it does not read the private personal Career-Ops installation. The repository contains no CV, tracker, provider credentials, or AI endpoint. See [ATTRIBUTION.md](ATTRIBUTION.md) for upstream and screenshot provenance.
 
-## Source and attribution
-
-The working prototype was adapted from Career-Ops. See [ATTRIBUTION.md](ATTRIBUTION.md) for screenshot provenance and upstream credit. This project is not affiliated with or endorsed by the Career-Ops maintainers.
+This is a demo under active development, not a job-application service or a promise of current availability, fit, or employment.

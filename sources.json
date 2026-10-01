@@ -1,0 +1,29 @@
+{
+  "liveBoards": [
+    { "ats": "greenhouse", "slug": "environmentalscienceassociates", "company": "Environmental Science Associates" },
+    { "ats": "lever", "slug": "true-environmental", "company": "True Environmental" },
+    { "ats": "ashby", "slug": "seismic-change.com", "company": "Seismic" },
+    { "ats": "lever", "slug": "pacific-environment", "company": "Pacific Environment" },
+    { "ats": "ashby", "slug": "alcazar-energy", "company": "Alcazar Energy" },
+    { "ats": "ashby", "slug": "gravityclimate", "company": "Gravity Climate" },
+    { "ats": "lever", "slug": "cfsenergy", "company": "Commonwealth Fusion Systems" }
+  ],
+  "workdayBoards": [
+    { "tenant": "erm", "instance": "wd3", "site": "erm_careers", "company": "ERM" },
+    { "tenant": "jll", "instance": "wd1", "site": "jllcareers", "company": "JLL" },
+    { "tenant": "wri", "instance": "wd501", "site": "wri", "company": "World Resources Institute" },
+    { "tenant": "norconsult", "instance": "wd3", "site": "norconsult_career_site_denmark", "company": "Norconsult Denmark" },
+    { "tenant": "norconsult", "instance": "wd3", "site": "norconsult_career_site", "company": "Norconsult" },
+    { "tenant": "kone", "instance": "wd3", "site": "careers", "company": "KONE" },
+    { "tenant": "storebrand", "instance": "wd3", "site": "storebrand_careers", "company": "Storebrand" },
+    { "tenant": "bakerhughes", "instance": "wd5", "site": "bakerhughes", "company": "Baker Hughes" },
+    { "tenant": "shell", "instance": "wd3", "site": "shellcareers", "company": "Shell" },
+    { "tenant": "blackrock", "instance": "wd1", "site": "blackrock_professional", "company": "BlackRock" },
+    { "tenant": "fmr", "instance": "wd1", "site": "fidelitycareers", "company": "Fidelity Investments" },
+    { "tenant": "pwc", "instance": "wd3", "site": "global_experienced_careers", "company": "PwC" },
+    { "tenant": "barclays", "instance": "wd3", "site": "external_career_site_barclays", "company": "Barclays" },
+    { "tenant": "ocbc", "instance": "wd102", "site": "external", "company": "OCBC" },
+    { "tenant": "dbs", "instance": "wd3", "site": "dbs_careers", "company": "DBS" },
+    { "tenant": "unilever", "instance": "wd3", "site": "unilever_experienced_professionals", "company": "Unilever" }
+  ]
+}
