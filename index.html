@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'">
+  <meta name="description" content="A public, read-only walkthrough of a sustainability-focused AI workflow adapted from open-source Career-Ops.">
+  <title>Sustainability AI Workflow — Public Preview</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="site-shell">
+    <aside class="sidebar" aria-label="Demo navigation">
+      <a class="brand" href="#run">Sustainability <span>AI Workflow</span></a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#run" data-nav="run">Run</a>
+        <a href="#jobs" data-nav="jobs">Jobs</a>
+        <a href="#cvs" data-nav="cvs">CVs</a>
+        <a href="#how" data-nav="how">How it works</a>
+      </nav>
+      <div class="sidebar-foot">Public preview <span>·</span> Development build</div>
+    </aside>
+
+    <main id="main" tabindex="-1">
+      <div class="mobile-head"><a class="brand" href="#run">Sustainability <span>AI Workflow</span></a><button id="menu-button" type="button" aria-label="Open navigation" aria-expanded="false">Menu</button></div>
+      <div class="notice" role="note"><strong>Public walkthrough</strong><span>Synthetic records. AI and document generation are disabled.</span></div>
+
+      <section id="run-view" class="view" aria-labelledby="run-title">
+        <p class="eyebrow">01 / Run</p>
+        <h1 id="run-title">Find your next role</h1>
+        <p class="lede">A single flow for finding, scoring, and reviewing opportunities. The public preview stops before any live AI call.</p>
+        <div class="actions"><button id="demo-run" class="primary" type="button">Find and score jobs</button><span class="cap">Maximum AI jobs this run <b>3</b></span></div>
+        <p id="run-message" class="status" role="status" aria-live="polite">Explore the saved example jobs below. No account or provider access is connected.</p>
+        <div class="proof-grid"><a class="metric" href="#jobs"><small>REVIEW QUEUE</small><strong>3</strong><span>example jobs</span></a><a class="metric" href="#jobs"><small>SCORED</small><strong>2</strong><span>example evaluations</span></a><a class="metric" href="#cvs"><small>CVs</small><strong>1</strong><span>example review state</span></a></div>
+        <div class="real-screen"><div class="section-heading"><h2>From the working project</h2><span>Exact screenshot crops</span></div><img src="assets/run-desktop-project-crop.png" width="1264" height="430" alt="Actual desktop Career-Ops Run screen, cropped above personal job counts"><img class="mobile-crop" src="assets/run-active-project-crop.png" width="390" height="630" alt="Actual mobile Career-Ops Run screen with the active orb and Stop control"></div>
+      </section>
+
+      <section id="jobs-view" class="view" aria-labelledby="jobs-title" hidden>
+        <p class="eyebrow">02 / Jobs</p><h1 id="jobs-title">Jobs</h1>
+        <p class="lede">Browse example roles and inspect why one might be worth reviewing.</p>
+        <label class="search-label">Search example jobs<input id="job-search" type="search" placeholder="Company or role" autocomplete="off"></label>
+        <p class="fixture-label">Synthetic demonstration data · no live vacancies</p>
+        <div id="job-list" class="job-list"></div>
+        <section id="job-detail" class="detail" aria-live="polite" hidden></section>
+      </section>
+
+      <section id="cvs-view" class="view" aria-labelledby="cvs-title" hidden>
+        <p class="eyebrow">03 / CVs</p><h1 id="cvs-title">CVs</h1>
+        <p class="lede">Documents stay linked to a role and require human review before use.</p>
+        <p class="fixture-label">Synthetic demonstration data · no personal CV included</p>
+        <div class="cv-row"><div class="file-icon" aria-hidden="true">▤</div><div><h2>Climate Risk Consultant</h2><p>Example Energy · illustrative review state</p></div><span class="review-pill">Needs review</span></div>
+        <div class="empty-panel"><strong>Document generation is unavailable in this public preview.</strong><p>The personal installation can prepare a tailored CV for review. This site stores no CV files and offers no downloads.</p></div>
+      </section>
+
+      <section id="how-view" class="view" aria-labelledby="how-title" hidden>
+        <p class="eyebrow">04 / How it works</p><h1 id="how-title">Human decisions, visible evidence</h1>
+        <ol class="flow"><li><strong>Discover</strong><span>Public employer and ATS sources</span></li><li><strong>Normalize</strong><span>Deduplicate roles and preserve source links</span></li><li><strong>Evaluate</strong><span>Compare a role with supported CV evidence</span></li><li><strong>Review</strong><span>Surface gaps and unknown eligibility</span></li><li><strong>Decide</strong><span>A person creates, uses, and sends documents</span></li></ol>
+        <div class="empty-panel"><strong>This preview is frontend-only.</strong><p>The backend is still being configured for any public test. No provider keys, AI execution, local files, application submission, or messaging are available here.</p></div>
+        <p class="credit">Personal side project based on the <a href="https://github.com/career-ops-hq/career-ops" target="_blank" rel="noopener noreferrer">open-source Career-Ops project</a>. This preview is not affiliated with or endorsed by its maintainers.</p>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
